@@ -3,7 +3,7 @@
 $ mkdir docker-python && cd docker-python
 ```
 2. Create Dockerfile 
-3. Create a Python file as index.py
+3. Create a Python file as *index.py*
 4. Create Docker Image
 ```
 $ docker build -t python-app:v1 .
