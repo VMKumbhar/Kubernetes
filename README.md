@@ -33,5 +33,5 @@ $ kubectl get namespaces/pods/deployments
 ```
 $ kubectl create -f service.yaml
 $ kubectl get svc -n development
-curl http://IP:5000
+$ curl http://IP:5000
 ```
