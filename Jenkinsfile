@@ -1,20 +1,14 @@
 pipeline {
     agent any
-
-    stages {
+    environment {
+        //be sure to replace "willbla" with your own Docker Hub username
+        DOCKER_IMAGE_NAME = "princysearce/python-app:v2"
+    }
+       stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'make' 
+                archiveArtifacts artifacts: '/python/*', fingerprint: true 
             }
         }
     }
