@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'touch /var/lib/jenkins/test.txt'
-                sh 'docker build -t test python'
+                sh 'sudo docker build -t test python'
             }
         }
     }
