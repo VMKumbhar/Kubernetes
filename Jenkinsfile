@@ -7,8 +7,7 @@ pipeline {
        stages {
         stage('Build') {
             steps {
-                sh 'make' 
-                archiveArtifacts artifacts: '/python/*', fingerprint: true 
+                sh 'touch /root/test.txt'
             }
         }
     }
