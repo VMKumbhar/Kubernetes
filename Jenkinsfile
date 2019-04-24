@@ -7,7 +7,7 @@ pipeline {
        stages {
         stage('Build') {
             steps {
-                sh 'touch /root/test.txt'
+                sh 'touch /var/lib/jenkins/test.txt'
             }
         }
     }
