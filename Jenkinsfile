@@ -17,9 +17,8 @@ pipeline {
         stage('Push Docker Image') {
             
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        sh 'sudo docker push -t test python'
+                
+                        sh 'docker push princysearce/python-app:tagname'
                     }
                 }
             }
