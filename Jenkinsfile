@@ -7,7 +7,7 @@ pipeline {
        stages {
         stage('Build') {
             steps {
-                sh 'touch /var/lib/jenkins/test.txt'
+                sh 'whoami'
                 sh 'sudo docker build -t test python'
             }
         }
