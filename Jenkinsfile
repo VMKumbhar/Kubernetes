@@ -21,7 +21,8 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') 
                     {
                       
-                        sh 'sudo docker push test'
+                        sh 'sudo docker tag test princysearce/test'
+                        sh 'sudo docker push princysearce/test'
 
                       
                     }
