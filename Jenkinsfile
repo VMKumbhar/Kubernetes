@@ -14,12 +14,11 @@ pipeline {
                 sh 'sudo docker build -t test python'
             }
         }
-        stage('Push Docker Image') {
-            
-            steps {
+        stage('Deploy Image') {
+            steps{
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
-                        sh 'sudo docker push -t test python'
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
                       
                     }
                 }
