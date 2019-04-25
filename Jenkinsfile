@@ -1,6 +1,10 @@
 pipeline {
     agent any
     environment {
+        {
+    registry = "princysearce/python-app"
+    registryCredential = ‘Princy8296’
+  }
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "princysearce/python-app:v2"
     }
