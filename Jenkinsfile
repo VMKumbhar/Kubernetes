@@ -2,8 +2,6 @@ pipeline {
     agent any
     environment {
         
-        registry = "princysearce/python-app"
-        registryCredential = 'Princy8296'
    
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "princysearce/python-app:v2"
@@ -14,11 +12,11 @@ pipeline {
                 sh 'sudo docker build -t test python'
             }
         }
-        stage('Deploy Image') {
-            steps{
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
+        stage('Push image') {
+       docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+           app.push("${env.BUILD_NUMBER}")
+           app.push("latest")
+           }
                       
                     }
                 }
