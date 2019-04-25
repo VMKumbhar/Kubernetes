@@ -22,8 +22,8 @@ pipeline {
                     {
                       
                        sh 'sudo docker login -u princysearce -p Princy8296'
-                       sh 'sudo docker tag test princysearce/test'
-                       sh 'sudo docker push gcr.io/searce-playground/python-app:v2'
+                     
+                       sh 'sudo docker push python-app:v2 gcr.io/searce-playground/python-app:v2'
 
                       
                     }
