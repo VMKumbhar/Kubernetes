@@ -21,9 +21,9 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') 
                     {
                       
-                        sh 'sudo docker login -u princysearce -p Princy8296'
-                        sh 'sudo docker tag test princysearce/test'
-                        sh 'sudo docker push princysearce/test'
+                       sh 'sudo docker login -u princysearce -p Princy8296'
+                       sh 'sudo docker tag test princysearce/test'
+                       sh 'sudo docker push gcr.io/searce-playground/python-app:v2'
 
                       
                     }
