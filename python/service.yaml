@@ -5,7 +5,6 @@ metadata:
   labels:
     app: python
   name: python
-  namespace: development
 spec:
   ports:
   - protocol: TCP
