@@ -18,9 +18,6 @@ pipeline {
             
             steps {
                 script {
-                    
-                    {
-                      
                       
                        sh 'sudo docker tag python-app:v2 gcr.io/searce-playground/python-app:v2'
                      
