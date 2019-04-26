@@ -18,6 +18,21 @@ pipeline {
                 }
             }
         }
+        stage('Deploy Application') {
+            steps {
+                script {
+                    sh("gcloud container clusters get-credentials princy-trial-cluster --zone asia-south1-a --project searce-playground")
+                        
+                    sh("kubectl --namespace=${namespace} apply -f deployment.yaml -n development")
+                    sh("kubectl --namespace=${namespace} apply -f service.yaml -n development")
+                    
+                    // echo 'To access your environment run `kubectl proxy`'
+                    echo "Then access your service via http://35.244.63.56:5000"
+                    //sh("echo http://`kubectl --namespace=${namespace} get service/${feSvcName} --output=json | jq -r '.status.loadBalancer.ingress[0].ip'` > ${feSvcName}")
+                }
+            }
+        }
+
     }
 }
 
