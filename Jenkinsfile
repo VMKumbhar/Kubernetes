@@ -23,7 +23,7 @@ pipeline {
                 script {
                     sh("gcloud container clusters get-credentials princy-trial-cluster --zone asia-south1-a --project searce-playground")
                         
-                    sh("kubectl apply -f python/deployment.yaml")
+                    sh("kubectl apply -f python/development.yaml")
                     sh("kubectl apply -f python/service.yaml")
                     
                     // echo 'To access your environment run `kubectl proxy`'
