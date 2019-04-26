@@ -24,7 +24,7 @@ pipeline {
                       
                        sh 'sudo docker tag python-app:v2 gcr.io/searce-playground/python-app:v2'
                      
-                       sh 'sudo docker push gcr.io/searce-playground/python-app:v2'
+                       sh 'sudo docker push gcr.io/searce-playground/python:v3'
 
                       
                     }
