@@ -17,11 +17,13 @@ pipeline {
         stage('Push Docker Image') {
             
             steps {
-                sh("gcloud container clusters get-credentials princy-trial-cluster --zone asia-south1-a --project searce-playground")
+                
+                withCredentials([file(credentialsId: "${searce-playground}", variable: 'JENKINSGCLOUDCREDENTIAL')])
+
                         
                 script {
                     
-                    
+                    sh 'gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}'
                     sh 'sudo gcloud auth configure-docker'   
                     sh 'sudo docker push gcr.io/searce-playground/python'
 
