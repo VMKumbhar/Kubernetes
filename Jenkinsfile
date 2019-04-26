@@ -23,8 +23,8 @@ pipeline {
                 script {
                     sh("gcloud container clusters get-credentials princy-trial-cluster --zone asia-south1-a --project searce-playground")
                         
-                    sh("kubectl --namespace=${namespace} apply -f deployment.yaml -n development")
-                    sh("kubectl --namespace=${namespace} apply -f service.yaml -n development")
+                    sh("kubectl apply -f python/deployment.yaml")
+                    sh("kubectl apply -f python/service.yaml")
                     
                     // echo 'To access your environment run `kubectl proxy`'
                     echo "Then access your service via http://35.244.63.56:5000"
