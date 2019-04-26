@@ -19,15 +19,11 @@ pipeline {
             steps {
                 
                 withCredentials([file(credentialsId: "${searce-playground}", variable: 'JENKINSGCLOUDCREDENTIAL')])
-
-                        
-                script {
-                    
-                    sh 'gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}'
-                    sh 'sudo gcloud auth configure-docker'   
-                    sh 'sudo docker push gcr.io/searce-playground/python'
-
-                      
+                {
+                    script {
+                        sh 'gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}'
+                        sh 'sudo gcloud auth configure-docker'   
+                        sh 'sudo docker push gcr.io/searce-playground/python'
                     }
                 }
             }
