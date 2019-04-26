@@ -9,23 +9,12 @@ pipeline {
         DOCKER_IMAGE_NAME = "princysearce/python-app:v2"
     }
     stages {
-        stage('Build') {
-            steps {
-                sh 'sudo docker build -t test python'
-            }
+        stage('Build image') {
+            app = docker.build("searce-playground/python", "./python/")
         }
-        stage('Push Docker Image') {
-            
-            steps {
-                
-                withCredentials([file(credentialsId: "${searce-playground}", variable: 'JENKINSGCLOUDCREDENTIAL')])
-                {
-                    script {
-                        sh 'gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}'
-                        sh 'sudo gcloud auth configure-docker'   
-                        sh 'sudo docker push gcr.io/searce-playground/python'
-                    }
-                }
+        stage('Push image') {
+            docker.withRegistry('https://gcr.io', 'gcr:[searce-playground]') {
+                app.push("${env.BUILD_NUMBER}")
             }
         }
     }
