@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                       
-                       
+                    sh 'sudo gcloud auth configure-docker'   
                     sh 'sudo docker push gcr.io/searce-playground/python:v3'
 
                       
