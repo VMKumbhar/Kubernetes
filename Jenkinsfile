@@ -19,7 +19,7 @@ pipeline {
         stage('Push image') {
             steps {
                 script {        
-                    docker.withRegistry('https://gcr.io', 'gcr:[searce-playground]') {
+                    docker.withRegistry('https://gcr.io', 'gcr:searce-playground') {
                         app.push("${env.BUILD_NUMBER}")
                     }
                 }
