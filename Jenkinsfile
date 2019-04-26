@@ -10,11 +10,19 @@ pipeline {
     }
     stages {
         stage('Build image') {
-            app = docker.build("searce-playground/python", "./python/")
+            steps {
+                script {
+                    app = docker.build("searce-playground/python", "./python/")
+                }
+            }
         }
         stage('Push image') {
-            docker.withRegistry('https://gcr.io', 'gcr:[searce-playground]') {
-                app.push("${env.BUILD_NUMBER}")
+            steps {
+                script {        
+                    docker.withRegistry('https://gcr.io', 'gcr:[searce-playground]') {
+                        app.push("${env.BUILD_NUMBER}")
+                    }
+                }
             }
         }
     }
